@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html>
+<!-- ✅ HEADER (inline from header.html) -->
+<header>
+    <nav>
+        <div>
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <strong>Student Performance Analysis</strong>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="tableau.html">Tableau Visualizations Dashboard</a>
+            <a href="visualizations_filtered.html">Python Visualizations Dashboard</a>
+        </div>
+    </nav>
+</header>
+
+<head>
+    <title>Tableau Dashboard</title>
+    <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #d5d9df;
+        }
+
+        header {
+            background-color: #2c3e50;
+            padding: 15px 20px;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            padding: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px 0;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+#tableauViz {
+            /* Remove any fixed width or height that might be overriding the Tableau layout */
+            width: 100%; /* Or adjust as needed for the container's width */
+            height: auto; /* Let Tableau determine the height */
+        }
+    </style>
+</head>
+<body>
+    <h1>Tableau Dashboard</h1>
+    <div id="tableauViz"></div>
+
+    <script type="text/javascript">
+        function initViz() {
+            var containerDiv = document.getElementById("tableauViz");
+            var url = "https://public.tableau.com/views/AnishaStoryV1Dashboard/StudentPerformanceAnalysisDashboard?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link";
+            var options = {
+                hideTabs: true,
+                hideToolbar: true,
+                // Remove any explicit width or height options
+                onFirstVizSizeKnown: function() {
+                    console.log("First size known");
+                    // Optionally, you can adjust the container size here if needed
+                }
+            };
+            var viz = new tableau.Viz(containerDiv, url, options);
+            // Optionally, you can interact with the viz object further here
+        }
+
+        initViz();
+    </script>
+</body>
+</html>
